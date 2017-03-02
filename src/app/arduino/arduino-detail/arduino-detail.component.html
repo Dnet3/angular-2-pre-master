@@ -1,0 +1,43 @@
+
+  <div class="row">
+    <div class="col-xs-12">
+      <p>{{selectedArduino?.address}}</p>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <p>{{selectedArduino?.drivers}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <p>{{selectedArduino?.managers}}</p>
+  </div>
+</div>
+  <div class="row">
+    <div class="col-xs-12">
+      <p>{{selectedArduino?.phone_number}}</p>
+    </div>
+  </div>
+<div class="row">
+  <div class="col-xs-12">
+    <p>{{selectedArduino?.type}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-9">
+    <button class="btn btn-success" (click)="onAddToClientList()">Add To Client List</button>
+    <button class="btn btn-primary" (click)="onEdit()">Edit</button>
+    <button class="btn btn-danger" (click)="onDelete()">Delete</button>
+  </div>
+</div>
+<hr>
+
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of selectedArduino?.clients"> {{item.accounts}} {{item.email_address}} {{item.name}}</li>
+    </ul>
+  </div>
+</div>

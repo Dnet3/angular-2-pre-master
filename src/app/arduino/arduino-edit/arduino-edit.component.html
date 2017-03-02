@@ -1,0 +1,133 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="arduinoForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-success" [disabled]="!arduinoForm.valid">Save</button>
+          <a class="btn btn-danger" (click)="onCancel()">Cancel</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="the_address">Address</label>
+            <input
+                    type="text"
+                    id="the_address"
+                    class="form-control"
+                    formControlName="address"
+                   >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="the_drivers">Driver</label>
+            <input
+                    type="text"
+                    id="the_drivers"
+                    rows="1"
+                    class="form-control"
+                    formControlName="drivers">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="the_managers">Manager</label>
+            <input
+                    type="text"
+                    id="the_managers"
+                    rows="2"
+                    class="form-control"
+                    formControlName="managers">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="the_phone_number">Phone</label>
+            <input
+                    type="text"
+                    id="the_phone_number"
+                    class="form-control"
+                    formControlName="phone_number">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="the_type">Type</label>
+            <input
+                    type="text"
+                    id="the_type"
+                    class="form-control"
+                    formControlName="type">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <ul class="list-group" formArrayName="clients">
+            <div
+                    class="row"
+                    *ngFor="let client of arduinoForm.controls['clients'].controls; let i = index">
+              <div formGroupName="{{i}}">
+
+
+                <div class="col-sm-5">
+                  <input
+                          type="text"
+                          class="form-control"
+                          formControlName="accounts">
+                </div>
+                <div class="col-sm-5">
+                  <input
+                          type="text"
+                          class="form-control"
+                          formControlName="email_address">
+                </div>
+                <div class="col-sm-5">
+                  <input
+                          type="text"
+                          class="form-control"
+                          formControlName="name">
+                </div>
+                <div class="col-sm-2">
+                  <button class="btn btn-danger" (click)="onRemoveItem(i)">Remove</button>
+                </div>
+              </div>
+
+              <br><br>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="form-group row">
+      <div class="col-md-5"><input type="text" class="form-control" #itemKey></div>
+      <div class="col-md-5"><input type="text" class="form-control" #itemAccounts></div>
+      <div class="col-md-5"><input type="text" class="form-control" #itemEmail></div>
+      <div class="col-md-5"><input type="text" class="form-control" #itemName></div>
+      <div class="col-md-2">
+        <button
+                type="button"
+                class="btn btn-primary"
+                (click)="onAddItem(itemKey.value, itemAccounts.value, itemEmail.value, itemName.value )">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

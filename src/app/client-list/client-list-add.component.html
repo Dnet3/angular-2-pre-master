@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form id="client-list-add" (ngSubmit)="onSubmit(f.value)" #f="ngForm">
+      <div class="row">
+
+        <div class="col-sm-4 form-group">
+          <label for="client-accounts">Account</label>
+          <input
+                  type="text"
+                  id="client-accounts"
+                  required
+                  class="form-control"
+                  [ngModel]="client.accounts"
+                  name="accounts" >
+
+        </div>
+        <div class="col-sm-2 form-group">
+          <label for="client-email_address">Email</label>
+          <input
+                  type="text"
+                  id="client-email_address"
+                  required
+                  class="form-control"
+                  [ngModel]="client.email_address"
+                  name="email_address">
+        </div>
+        <div class="col-sm-2 form-group">
+          <label for="client-name">Name</label>
+          <input
+                  type="text"
+                  id="client-name"
+                  required
+                  class="form-control"
+                  [ngModel]="client.name"
+                  name="name">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button class="btn btn-success" type="submit" *ngIf="isAdd" [disabled]="!f.valid">Add</button>
+          <button class="btn btn-success" type="submit" *ngIf="!isAdd" [disabled]="!f.valid">Save</button>
+          <button class="btn btn-danger" type="button" *ngIf="!isAdd" (click)="onDelete()">Delete Item</button>
+          <button class="btn btn-primary" type="button" *ngIf="!isAdd" (click)="onClear()">Clear</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
