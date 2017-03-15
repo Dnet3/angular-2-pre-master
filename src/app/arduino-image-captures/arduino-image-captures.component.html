@@ -1,0 +1,27 @@
+<div class="container">
+  <p><strong>Image Captures</strong></p>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Key</th>
+      <th>Image Capture</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Timestamp</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of imageData | async let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{data.$key}}</td>
+      <td><img src="{{data.imageStorageAddress}}" width="100px" height="100px"></td>
+      <td>{{data.latitude}}</td>
+      <td>{{data.longitude}}</td>
+      <td>{{data.timestamp | date:"MM/dd/yy hh:mm a"}}</td>
+    </tr>
+    </tbody>
+
+  </table>
+  <button (click)="removeImageAndData()" style="color: #4d90fe">Delete</button>
+</div>
