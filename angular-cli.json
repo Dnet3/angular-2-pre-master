@@ -1,7 +1,7 @@
 {
   "project": {
     "version": "1.0.0-beta.28.3",
-    "name": "site-angular"
+    "name": "firebase-app"
   },
   "apps": [
     {
@@ -19,6 +19,7 @@
       "prefix": "app",
       "styles": [
         "styles.css"
+
       ],
       "scripts": [],
       "environments": {

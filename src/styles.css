@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background-image: url("./assets/image/maxresdefault.jpg");
+
+}
+.projectImage{
+    margin-top: 10px;
+}
+.container{
+    max-width: 1200px;
+}
+
+
+
+.table{
+    border-color: gray;
+    background-color: teal;
+
+    
+}
+
+.table table-hover{
+    color: #000;
+}

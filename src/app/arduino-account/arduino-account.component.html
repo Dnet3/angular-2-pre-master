@@ -1,0 +1,70 @@
+<div class="container">
+  <p><strong>Owner Detail</strong></p>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let usr of users | async let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{usr.name}}</td>
+      <td>{{usr.emailAddress}}</td>
+    </tr>
+    </tbody>
+    <figure class="highlight">
+      <button (click)="removeUser()" style="color: #4d90fe">Delete</button>
+    </figure>
+  </table>
+
+
+<div>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Account Type</th>
+      <th>Address</th>
+      <th>Phone</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor="let dat of data | async let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{dat.accountType}}</td>
+      <td>{{dat.address}}</td>
+      <td>{{dat.phoneNumber}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <p><strong>Arduino Detail</strong></p>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Key</th>
+      <th>Name</th>
+      <th>Activation Date</th>
+      <th>Decommission Date</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor="let ard of arduino | async let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{ard.$key}}</td>
+      <td>{{ard.name}}</td>
+      <td>{{ard.activationDate | date:"MM/dd/yy hh:mm a" }}</td>
+      <td>{{ard.decommissionDate | date:"MM/dd/yy hh:mm a" }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</div>

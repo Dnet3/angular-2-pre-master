@@ -1,57 +1,49 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
-
-
-import { HeaderComponent } from "./shared/header.component";
-import { SigninComponent } from "./unprotected/signin.component";
-import { SignupComponent } from "./unprotected/signup.component";
-
-import { AuthGuard } from "./shared/auth.guard";
-import { AuthService } from "./shared/auth.service";
-import { routing } from "./app.routing";
+import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
-import { ArduinoComponent } from './arduino/arduino.component';
-import { ArduinoListComponent } from './arduino/arduino-list/arduino-list.component';
-import { ArduinoDetailComponent } from './arduino/arduino-detail/arduino-detail.component';
-import {ArduinoItemComponent} from './arduino/arduino-list/arduino-item.component';
-import { ClientListComponent } from './client-list/client-list.component';
-import { ClientListAddComponent } from './client-list/client-list-add.component';
-import { ArduinoEditComponent } from './arduino/arduino-edit/arduino-edit.component';
-import {ArduinoStartComponent} from "./arduino/arduino-start.component";
-import { DropdownDirective } from './dropdown.directive';
-import {ClientListService} from './client-list/client-list.service';
-import {ArduinoService} from './arduino/arduino.service';
+import { HomePageComponent } from './home-page/home-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import {AF} from "./providers/af";
+import {TabViewModule} from 'primeng/primeng';
+import { routing } from "./app.routes";
+import {DataTableModule,SharedModule} from 'primeng/primeng';
+import {Dialog} from 'primeng/primeng';
+import {AccordionModule} from 'primeng/primeng';     //accordion and accordion tab
+import {MenuItem} from 'primeng/primeng';
+
+import {Arduino} from "./arduino";
+import { ArduinoAccountComponent } from './arduino-account/arduino-account.component';
+import { ArduinoImageCapturesComponent } from './arduino-image-captures/arduino-image-captures.component';
+import { ArduinoJourneysComponent } from './arduino-journeys/arduino-journeys.component';
+import { AgmCoreModule } from 'angular2-google-maps/core';
+import { GmapComponent } from './gmap/gmap.component';
+import { CommonModule } from '@angular/common';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyBLagVugFSNhJlXBzBSekzoHseOArT7GaQ",
+  authDomain: "lammsite-fc813.firebaseapp.com",
+  databaseURL: "https://lammsite-fc813.firebaseio.com",
+  storageBucket: "lammsite-fc813.appspot.com",
+  messagingSenderId: "482319848745"
+};
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    SigninComponent,
-    SignupComponent,
-
-    ArduinoComponent,
-    ArduinoListComponent,
-    ArduinoDetailComponent,
-      ArduinoItemComponent,
-      ClientListComponent,
-    ClientListAddComponent,
-      ArduinoEditComponent,
-    ArduinoStartComponent,
-    DropdownDirective,
-
-
-  ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule,routing, ReactiveFormsModule
+    AngularFireModule.initializeApp(firebaseConfig),
+   routing,
+    FormsModule,TabViewModule,AccordionModule,DataTableModule, SharedModule,CommonModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDRFRnui7AAzq2-_HVCcSyNHm24j1nDNJ8'
+    })
   ],
-  providers: [AuthGuard,
-    AuthService, ClientListService, ArduinoService],
-  bootstrap: [AppComponent ]
+  declarations: [ AppComponent, LoginPageComponent, HomePageComponent, RegistrationPageComponent,  ArduinoAccountComponent, ArduinoImageCapturesComponent, ArduinoJourneysComponent, GmapComponent ],
+  bootstrap: [ AppComponent ],
+  providers: [AF]
 })
-export class AppModule { }
+export class AppModule {}
